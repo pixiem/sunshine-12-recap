@@ -54,7 +54,7 @@ const Footer = () => {
             </div>
             <div className='container '>
         <hr style={{border:"1px solid #7e7b88", margin:""}} /> 
-        <center><span>ALL RIGHTS RESERVED. DEVELOPED BY PROGRESSION STUDIOS
+        <center><span>ALL RIGHTS RESERVED. DEVELOPED BY MD NAYMUL ISLAM
 </span></center>
         </div>
             

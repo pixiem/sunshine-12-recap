@@ -24,6 +24,7 @@
 background-color: #444444;
 color: white;
 margin-top: 10px;
+margin-left: 85%;
 }
 .btn:hover{
     color: white;
@@ -36,19 +37,19 @@ margin-top: 10px;
     display: none;
 }
 .btn:hover {
-    color: black;
+    color: white;
 }
 .dropdown-menu.show {
     display: block;
-    margin-left: -120px;
+ 
 }
 .dropdown-menu{
     margin-top: 23px;
-    background-color: white;
+    background-color: rgb(218, 22, 22);
 }
 .dropdown-item:hover{
-    background-color: red;
-    color: white !important;
+    background-color: white;
+    color: black !important;
     transition: .5s;
 }
 .logreg{
@@ -69,6 +70,10 @@ margin-top: 10px;
     color: black;
     border: 1px solid #444444 ;
     transition: 0.5s;
+}
+.profile{
+    margin-left: 31px;
+    background-color: #ff2624;
 }
 @media (max-width:767px) { 
     .navbar-collapse{

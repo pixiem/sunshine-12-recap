@@ -5,14 +5,6 @@ import "./Navbar.css"
 import { CgProfile,CgShoppingCart } from "react-icons/cg";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 import Badge from '@material-ui/core/Badge';
 
@@ -72,9 +64,8 @@ const Navbar = () => {
        
       </ul>
       
-      {!user.email && <div className='d-flex align-items-center justify-content-center mx-auto'>
-          <span  class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-           <Link style={{textDecoration:"none",color:"black"}} to='/login'><CgProfile size={30}/></Link> </span> <Badge badgeContent={4} 
+      {!user.email && <div className='d-flex align-items-center '>
+           <Badge badgeContent={4} 
       color="primary">
          
         <CgShoppingCart  onClick={toggleDrawer('right', true)} size={30}  />
@@ -92,9 +83,28 @@ const Navbar = () => {
         </React.Fragment>
       ))}
     </div>
+    <span  class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+           {!user.email && <Link style={{textDecoration:"none",color:"black"}} to='/login'><CgProfile size={30}/></Link>} </span>
       </div>}
-      {user.email && <div>
-        <div className="dropdown">
+      {user.email && <div className='d-flex align-items-center'> <Badge badgeContent={4} 
+      color="primary">
+         
+        <CgShoppingCart  onClick={toggleDrawer('right', true)} size={30}  />
+      </Badge><div>
+      {['left', 'right', 'top', 'bottom'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
+        <div  className="ms-3dropdown">
   <button className="btn profile dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {user.photoURL ? <img width='40px' style={{borderRadius:"50%"}} src={`${user.photoURL}`} alt="" /> :<img width='30px' style={{borderRadius:"50%"}} src='./pngegg (1).png' alt="" /> } <span style={{fontSize:"18px"}}>My Profile</span>
   </button>
