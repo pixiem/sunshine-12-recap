@@ -1,0 +1,42 @@
+.bannerOne{
+    background-image: url("../../../public/slide-1.jpg");
+    width: 100%;
+    margin-top: -3%;
+    height: 100vh;
+    background-size: cover;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.owl-nav{
+    display: none;
+}
+.owl-dots{
+    display: none;
+}
+.bannerTwo{
+    background-image: url("../../../public/slide-2.jpg");
+    width: 100%;
+    margin-top: -3%;
+    height: 100vh;
+    background-size: cover;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.learnmore{
+    margin-top: 25px;
+    padding: 10px 40px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 30px;
+}
+.carouselSliderBanner{
+    margin-top: -20px;
+}

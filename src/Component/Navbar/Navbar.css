@@ -1,0 +1,85 @@
+.navbar{
+ 
+    height: 90px;
+}
+.nav-item{
+    font-size: 20px;
+    color: black !important;
+    font-weight: 500;
+
+}
+.nav-item :hover {
+    border-bottom: 3px solid red;
+}
+.navbar-nav li{
+    color: white;
+}
+.profile{
+    background-color: #444444;
+    color: white;
+    border-radius: 45px;
+    padding: 12px;
+}
+.dropdown-menu {
+background-color: #444444;
+color: white;
+margin-top: 10px;
+}
+.btn:hover{
+    color: white;
+}
+.dropdown-item:hover{
+    color: black !important;
+    transition: .5s;
+}
+.dropdown-toggle::after{
+    display: none;
+}
+.btn:hover {
+    color: black;
+}
+.dropdown-menu.show {
+    display: block;
+    margin-left: -120px;
+}
+.dropdown-menu{
+    margin-top: 23px;
+    background-color: white;
+}
+.dropdown-item:hover{
+    background-color: red;
+    color: white !important;
+    transition: .5s;
+}
+.logreg{
+    border: none;
+    background-color: #ff1b18;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    border-radius: 30px;
+    
+}
+.logreg:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #444444 ;
+    transition: 0.5s;
+}
+@media (max-width:767px) { 
+    .navbar-collapse{
+        background-color: white;
+        border-bottom: 8px solid black;
+        padding-bottom: 27px;
+    }
+    
+  }
+
+@media (min-width:767px) { 
+    .navbar-nav {margin-left: 20%;}
+    
+  }
