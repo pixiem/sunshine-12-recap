@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFirebase from '../../Hook/useFirebase';
 import "./Navbar.css"
@@ -7,8 +7,24 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 
 import Badge from '@material-ui/core/Badge';
+import MyOrder from '../MyOrderCard/MyOrder';
 
 const Navbar = () => {
+  const { user,logout} = useFirebase();
+  const [myorder,setAllORde] = useState([]);
+  
+ 
+ 
+   if(user.email){
+    fetch(`http://localhost:5000/myorder/${user.email}`)
+    .then(res => res.json())
+    .then(data => {
+      setAllORde(data);
+       
+    })
+   }
+
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -23,7 +39,7 @@ const Navbar = () => {
 
     setState({ ...state, [anchor]: open });
   };
-  const { user,logout} = useFirebase();
+ 
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 300 }}
@@ -65,7 +81,7 @@ const Navbar = () => {
       </ul>
       
       {!user.email && <div className='d-flex align-items-center '>
-           <Badge badgeContent={4} 
+           <Badge
       color="primary">
          
         <CgShoppingCart  onClick={toggleDrawer('right', true)} size={30}  />
@@ -79,6 +95,9 @@ const Navbar = () => {
             onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
+            <div style={{height:"400px"}} className='d-flex justify-content-center align-items-center'>
+            <center ><span style={{fontWeight:"600"}}>LOGIN FOR SHOW YOUR ORDER</span></center>
+            </div>
           </Drawer>
         </React.Fragment>
       ))}
@@ -86,7 +105,7 @@ const Navbar = () => {
     <span  class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
            {!user.email && <Link style={{textDecoration:"none",color:"black"}} to='/login'><CgProfile size={30}/></Link>} </span>
       </div>}
-      {user.email && <div className='d-flex align-items-center'> <Badge badgeContent={4} 
+      {user.email && <div className='d-flex align-items-center'> <Badge badgeContent={myorder.length} 
       color="primary">
          
         <CgShoppingCart  onClick={toggleDrawer('right', true)} size={30}  />
@@ -100,6 +119,8 @@ const Navbar = () => {
             onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
+            {myorder.map(order=> <MyOrder data={order} ></MyOrder>)}
+          
           </Drawer>
         </React.Fragment>
       ))}

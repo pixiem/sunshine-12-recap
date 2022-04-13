@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Home.css"
 import Navbar from "../Navbar/Navbar"
 import Slider from '../Slider/Slider';
@@ -7,12 +7,12 @@ import Review from '../Review/Review';
 import Footer from '../Footer/Footer';
 import Services from '../Services/Services';
 const Home = () => {
-  
+
     return (
         <div>
             {/* HEADER SECTION*/}
-            <Navbar></Navbar>
-            <Slider></Slider>
+            
+         <Slider></Slider>
             <div style={{marginTop:"-30px"}} className='row mx-auto'>
                 <div  style={{backgroundColor:"black",height:"100px",borderRight:".5px solid #f1e8e8"}} className='col-12 col-md-4 d-flex justify-content-center align-items-center'>
                     <span style={{color:"#ff1816",fontSize:"25px"}}>01</span> <span style={{fontSize:"40px",color:"white"}}>STARTER</span>
@@ -44,7 +44,7 @@ const Home = () => {
             </div>
            <Review></Review>
            
-           <Footer></Footer>
+       
           
         </div>
     );

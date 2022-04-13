@@ -5,20 +5,30 @@ import Home from './Component/Home/Home';
 import LoginPage from "./Component/loginPAge/LoginPage"
 import useFirebase from './Hook/useFirebase';
 import Dashboard from './Component/Dashboard/Dashboard';
+import PlaceOrder from './Component/PlaceOrder/PlaceOrder';
+import Navbar from './Component/Navbar/Navbar';
+import Footer from './Component/Footer/Footer';
+import { useState } from 'react';
 
 
 function App() {
-  const{user}= useFirebase();
+  const{user,loading}= useFirebase();
+  const [load,setLoad] = useState(false);
+  setTimeout(()=>{ setLoad(true)}, 1500);
   return (
     <div className="App">
-     <BrowserRouter>
+      {!load && <div style={{width:"100%",height:"800px",}} className="d-flex justify-content-center align-items-center" > <img width="300px" height="300px" src="./preloader.gif" alt="" /> </div> }
+     {load && <BrowserRouter>
+     <Navbar></Navbar>
        <Routes>
        <Route path="/" element={<Home />} />
        <Route path="/login" element={<LoginPage />} />
-       <Route path="/dashboard"  element={ user.email ?<Dashboard />: <Navigate to="/login"/>}  />
+       <Route path="/dashboard"  element={loading? <p>LOADING</p>: user.email ?<Dashboard />: <Navigate to="/login"/>}  />
+       <Route path="/placeorder/:serviceId"  element={loading? <p>LOADING</p>: user.email ?<PlaceOrder />: <Navigate to="/login"/>}  />
 
        </Routes>
-    </BrowserRouter>
+       <Footer></Footer>
+    </BrowserRouter>}
     </div>
   );
 }

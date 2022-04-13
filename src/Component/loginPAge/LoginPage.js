@@ -8,7 +8,7 @@ import useFirebase from '../../Hook/useFirebase';
 import "./LoginPAge.css"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import initializeAuthentication from '../../Firebase/firebase.init';
-import Navbars from '../Navbar/Navbar';
+
 
 
 
@@ -122,8 +122,8 @@ const LoginPage = () => {
       setRegister(false)
     }
     return ( <> 
-    <Navbars></Navbars>
-       <div className='mt-5 row mx-auto justify-content-center' >
+   
+       <div className='mt-5 mb-5 row mx-auto justify-content-center' >
          <div className='col-md-4  m-5 col-12'>
          {!register && !user.email && <center>
 
