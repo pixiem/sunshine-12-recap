@@ -16,7 +16,7 @@ const Navbar = () => {
  
  
    if(user.email){
-    fetch(`http://localhost:5000/myorder/${user.email}`)
+    fetch(`https://arcane-cliffs-11485.herokuapp.com/myorder/${user.email}`)
     .then(res => res.json())
     .then(data => {
       setAllORde(data);
@@ -52,35 +52,33 @@ const Navbar = () => {
     </Box>
   );
 
-    return (
-        <div className='px-md-5'>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <div className="container-fluid mt-5">
-    <img width="120px" src="./logo.png" alt="" />
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse  d-md-flex justify-content-between" id="navbarNavDropdown">
-      <ul className="navbar-nav">
+    return (<div className="p-4">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <img width="120px" src="./logo.png" alt="" />
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div  class="collapse justify-content-between navbar-collapse" id="navbarSupportedContent">
+  <ul className="navbar-nav">
         <li className="nav-item me-md-5">
           <Link to="/" style={{color:"black",fontWeight:"600",textDecoration:"none"}}  className="nav-link " aria-current="page" href="#">HOME</Link>
         </li>
         <li className="nav-item me-md-5">
-          <a style={{color:"black",fontWeight:"600"}}  className="nav-link" href="#">ABOUT</a>
+          <Link to="/shop" style={{color:"black",fontWeight:"600"}}  className="nav-link" href="#">SHOP</Link>
         </li>
         <li className="nav-item">
-          <a style={{color:"black",fontWeight:"600"}} className="nav-link" href="#">SHOP</a>
+          <Link   to="/shop" style={{color:"black",fontWeight:"600"}} className="nav-link" href="#">ABOUT</Link>
         </li>
         <li className="nav-item">
-          <a style={{color:"black",fontWeight:"600"}} className="nav-link" href="#">GALLERY</a>
+          <Link  to="/shop"  style={{color:"black",fontWeight:"600"}} className="nav-link" href="#">GALLERY</Link>
         </li>
         <li className="nav-item">
-          <a style={{color:"black",fontWeight:"600"}} className="nav-link" href="#">NEWS</a>
+          <Link  to="/shop"  style={{color:"black",fontWeight:"600"}} className="nav-link" href="#">NEWS</Link>
         </li>
        
       </ul>
-      
-      {!user.email && <div className='d-flex align-items-center '>
+      {!user.email && <div className='d-flex align-items-center justify-content-center '>
            <Badge
       color="primary">
          
@@ -105,7 +103,7 @@ const Navbar = () => {
     <span  class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
            {!user.email && <Link style={{textDecoration:"none",color:"black"}} to='/login'><CgProfile size={30}/></Link>} </span>
       </div>}
-      {user.email && <div className='d-flex align-items-center'> <Badge badgeContent={myorder.length} 
+      {user.email && <div className='d-flex align-items-center justify-content-center'> <Badge badgeContent={myorder.length} 
       color="primary">
          
         <CgShoppingCart  onClick={toggleDrawer('right', true)} size={30}  />
@@ -130,17 +128,21 @@ const Navbar = () => {
     {user.photoURL ? <img width='40px' style={{borderRadius:"50%"}} src={`${user.photoURL}`} alt="" /> :<img width='30px' style={{borderRadius:"50%"}} src='./pngegg (1).png' alt="" /> } <span style={{fontSize:"18px"}}>My Profile</span>
   </button>
   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <Link style={{color:"white"}} className="dropdown-item" to="/Myorder">My Orders</Link>
+    <Link style={{color:"white"}} className="dropdown-item" to="/review">Review</Link>
     <Link style={{color:"white"}} className="dropdown-item" to="/dashboard">Dashboard</Link>
     <span onClick={logout}  style={{color:"white"}} className="dropdown-item">Log Out</span>
     
   </div>
 </div></div>}
-    </div>
+      
+    
   </div>
-</nav> <hr />
-        </div>
-    );
+</nav>
+
+
+
+       
+   </div> );
 };
 
 export default Navbar;

@@ -3,7 +3,7 @@ import React from 'react';
 const MyOrder = (props) => {
     const data = props.data.product;
     const deleteMyOrder = (id) =>{
-        const url = `http://localhost:5000/deletemyorder/${id}`;
+        const url = `https://arcane-cliffs-11485.herokuapp.com/deletemyorder/${id}`;
         fetch(url,{
             method:"DELETE",
             headers:{"content-type": "application/json"}

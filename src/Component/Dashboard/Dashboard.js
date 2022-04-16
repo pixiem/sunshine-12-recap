@@ -1,29 +1,68 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Dashboard.css"
 import { IoAddCircleOutline } from "react-icons/io5";
 import { MdManageAccounts, MdOutlineLogout, MdOutlineAdminPanelSettings, MdLibraryAdd, MdProductionQuantityLimits } from "react-icons/md";
-
+import useFirebase from '../../Hook/useFirebase'
 import cogoToast from 'cogo-toast';
 import axios from 'axios';
 
 const Dashboard = () => {
+    const {logout} = useFirebase()
     const [addProduct, setAddProduct] = useState(true);
     const [manageAllOrder, setManageAllOrder] = useState(false);
     const [managePRoduct, setMAnagePRoduct] = useState(true);
     const [makeAdmin, setMakeAdmin] = useState(true);
- 
+
     const [productName, setPRoductName] = useState('')
     const [productDes, setPRoductDes] = useState('')
     const [productPrice, setPRoductPrice] = useState('')
     const [productImage, setPRoductImage] = useState('')
+
+    
+
+
+    const [manageORders, setManageORders] = useState([]);
+
+    fetch('https://arcane-cliffs-11485.herokuapp.com/allorder')
+    .then(res => 
+       ( res.json())
+     
+    )
+    .then(
+        data => {
+            setManageORders(data)
+          
+         
+        },
+        (error) => {
+            console.log(error)
+        })
+
+        const adminDelete = (id) =>{
+            const url = `https://arcane-cliffs-11485.herokuapp.com/admindeleteorder/${id}`;
+            fetch(url,{
+                method:"DELETE",
+                headers:{"content-type": "application/json"}
+            })
+            .then(res => res.json())
+            .then(data =>{
+                console.log(data)
+                // if(data.deletedCount){
+                    
+                   
+    
+                // }
+            })
+        }
+
     const addproductsubmit = (e) => {
         e.preventDefault()
 
         const product = { name: productName, description: productDes, price: productPrice, image: productImage };
 
         console.log(product);
-        axios.post('http://localhost:5000/addCycle', product)
-            // fetch('http://localhost:5000/addCycle',{
+        axios.post('https://arcane-cliffs-11485.herokuapp.com/addCycle', product)
+            // fetch('https://arcane-cliffs-11485.herokuapp.com/addCycle',{
             //     method:'POST',
             //     body: product
             // })
@@ -33,7 +72,14 @@ const Dashboard = () => {
             });
         e.target.reset();
         setPRoductImage('')
+
+
+      
+
+         
     }
+
+  
     return (
         <div>
          
@@ -77,7 +123,7 @@ const Dashboard = () => {
                             }}> Make Admin </div>
                         </div>
                         <div>
-                            <div className='mx-auto adminlogout' style={{
+                            <div onClick={logout} className='mx-auto adminlogout' style={{
                                 border: "none",
                                 display: "flex",
                                 justifyContent: "center",
@@ -145,8 +191,56 @@ const Dashboard = () => {
 
                             </div>
                         </form>
+                   
+                   
                     </div>}
+                     {/* MANAGE ALL ORDER  */}
+                {manageAllOrder && 
+             <div className='haha' style={{backgroundColor:"rgb(110, 84, 245)",borderRadius:"25px",padding:"10px",color:"white"}}>          
+                        <div  > 
+                        <div  style={{borderBottom:"4px solid white"}}  className='row p-2 singlerow'>
+                            <div
+                            style={{borderRight:"1px solid white"}} className='col-md-3 col-3'>                      <span>PRODUCT NAME</span> 
+                            </div>
+                            <div   style={{borderRight:"1px solid white"}}  className='col-md-2 col-2'>
+                                <span>PRICE</span> 
+                            </div>
+                            <div   style={{borderRight:"1px solid white"}}  className='col-md-4 col-6'>
+                                <span>EMAIL</span> 
+                            </div>
+                            <div    className='col-md-2 col-1'>
+                                <span>ACTION </span> 
+                            </div>
+                        </div>
+
+                        {manageAllOrder && <div>
+
+                            {manageORders.map(allorder =>  <div className='row singlerow p-2 justifu-content-center align-items-center'>
+                            <div   style={{borderRight:"1px solid white"}} className='col-md-3 col-3'>                      <span>Extra Byte</span> 
+                            </div>
+                            <div   style={{borderRight:"1px solid white"}}  className='col-md-2 col-2'>
+                                <span>250$</span> 
+                            </div>
+                            <div   style={{borderRight:"1px solid white"}}  className='col-md-4 col-6'>
+                                <span>naymulislam01855@gmail.com</span> 
+                            </div>
+                            <div  className='col-md-2 col-1'>
+                                <span> <button  onClick={()=>{adminDelete(allorder._id)}} style={{backgroundColor:"#cae7f1",padding:"8px",border:"none",borderRadius:"15px"}}>Remove</button> </span> 
+                            </div>
+                        </div> )}
+
+                        </div>
+                        }
+                        
+
+                        
+                        
+                        </div>
+                 
+             </div>   
+                }
                 </div>
+               
 
             </div>
         </div>

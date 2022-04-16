@@ -23,7 +23,7 @@ const Slider = () => {
           <div style={{marginLeft: "-28%"}}>
 <span style={{fontSize:"20px",letterSpacing:"6px",fontFamily:"Carrois Gothic",color:"white"}}>LIGHTEST GETS LIGHTER</span> <br /> 
  <span style={{fontSize:"65px",fontStyle:"italic",fontWeight:"700",color:"white",lineHeight:"-1.5px"}}>ALL-NEW ONZO PRO</span> <br />
- <button style={{fontSize:"15px",fontWeight:"700"}} className='learnmore'>Learn More</button>
+ <button style={{fontSize:"15px",fontWeight:"700"}} className='learnmore'>Explore</button>
 </div>   
           </div>  
 

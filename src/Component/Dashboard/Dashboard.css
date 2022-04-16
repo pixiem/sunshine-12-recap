@@ -5,3 +5,12 @@
     border-radius: 15px;
     transition: .5s;
 }
+@media (max-width:767px) { 
+    .singlerow{
+        width: 500px !important;
+   }
+   .haha{
+       overflow: scroll;
+   }
+    
+  }

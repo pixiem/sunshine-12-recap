@@ -1,9 +1,9 @@
 const firebaseConfig = {
-    apiKey:"AIzaSyBzxE79Phi8bg9VON7V2UJwLhIkK5JTQXg",
-    authDomain: "food-ecommerce-75bf9.firebaseapp.com",
-    projectId: "food-ecommerce-75bf9",
-    storageBucket: "food-ecommerce-75bf9.appspot.com",
-    messagingSenderId: "719934528969",
-    appId: "1:719934528969:web:fb6ed37efd8618a93b9c18"
-  };
+  apiKey: "AIzaSyDARHri9bEofbXb5o7HK8kGzy-XDnObYsc",
+  authDomain: "cycle-store-b91d8.firebaseapp.com",
+  projectId: "cycle-store-b91d8",
+  storageBucket: "cycle-store-b91d8.appspot.com",
+  messagingSenderId: "372583148255",
+  appId: "1:372583148255:web:429a907111b2b95345d76a"
+};
   export default firebaseConfig;

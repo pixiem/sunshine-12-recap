@@ -6,7 +6,36 @@ import Features from '../Features/Features';
 import Review from '../Review/Review';
 import Footer from '../Footer/Footer';
 import Services from '../Services/Services';
+import Card from '../Card/Card';
 const Home = () => {
+    const[product,setProduct] = useState([]);
+    const[loading,setLoading] = useState(true);
+    const sixproduct = product.slice(0,8)
+
+    setTimeout(() => {if(product.length === 0){
+        fetch('https://arcane-cliffs-11485.herokuapp.com/getCycle')
+        .then(res => res.json())
+        .then(
+            (data) => {
+                setProduct(data)
+                setLoading(false);
+             
+            },
+            (error) => {
+            })
+    }}, 3000);
+    
+        fetch('https://arcane-cliffs-11485.herokuapp.com/getCycle')
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    setProduct(data)
+     
+                    setLoading(false)
+                },
+                (error) => {
+                })
+  
 
     return (
         <div>
@@ -26,7 +55,19 @@ const Home = () => {
 
             </div>
          
-            <Services></Services> 
+            <div>
+            <div style={{ marginBottom: "100px", marginTop: "40px" }}  >
+                <span style={{ fontSize: "45px", fontStyle: "italic", fontWeight: "700", color: "black", lineHeight: "-1.5px" }}>Lets Go Shopping</span>
+            </div>
+
+            <div className='row m-5'>
+                {loading && <div className='d-flex justify-content-center mx-auto'><img src="./preloader.gif" alt="" /></div> }
+                {sixproduct.map(products => <Card data={products}></Card>)}
+              
+            </div>
+
+
+        </div> 
             <br />
             <Features></Features>
             <br />

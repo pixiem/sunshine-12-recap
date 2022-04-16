@@ -7,30 +7,30 @@ const Services = () => {
     const[product,setProduct] = useState([]);
     const[loading,setLoading] = useState(true);
 
-    setTimeout(() => {if(product.length === 0){
-        fetch('http://localhost:5000/getCycle')
-        .then(res => res.json())
-        .then(
-            (data) => {
-                setProduct(data)
-                setLoading(false);
+    // setTimeout(() => {if(product.length === 0){
+    //     fetch('https://arcane-cliffs-11485.herokuapp.com/getCycle')
+    //     .then(res => res.json())
+    //     .then(
+    //         (data) => {
+    //             setProduct(data)
+    //             setLoading(false);
              
-            },
-            (error) => {
-            })
-    }}, 2000);
-    useEffect(() => () => {
-        fetch('http://localhost:5000/getCycle')
+    //         },
+    //         (error) => {
+    //         })
+    // }}, 2000);
+    
+        fetch('https://arcane-cliffs-11485.herokuapp.com/getCycle')
             .then(res => res.json())
             .then(
                 (data) => {
                     setProduct(data)
-                    console.log(data)
+     
                     setLoading(false)
                 },
                 (error) => {
                 })
-    }, [])
+  
 
 
     return (

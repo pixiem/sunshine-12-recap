@@ -1,6 +1,9 @@
 .navbar{
  
-    height: 90px;
+  
+    z-index: 2 ;
+    margin: 0 !important;
+   padding-right: 4%;
 }
 .nav-item{
     font-size: 20px;
@@ -81,10 +84,18 @@ margin-left: 85%;
         border-bottom: 8px solid black;
         padding-bottom: 27px;
     }
+    .dropdown-menu.show {
+        margin-left: 40%;
+        margin-top: -13%;
+     
+    } .navbar{
+        padding: 30px !important;}
     
   }
 
 @media (min-width:767px) { 
     .navbar-nav {margin-left: 20%;}
+    .navbar{height:"90px";
+         padding-right: 4%;}
     
   }

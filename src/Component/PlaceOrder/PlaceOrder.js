@@ -12,7 +12,7 @@ const PlaceOrder = () => {
     
     const [loading,setLoading] = useState(true);
     useEffect(()=>{
-        fetch(`http://localhost:5000/placeorder/${serviceId}`, {
+        fetch(`https://arcane-cliffs-11485.herokuapp.com/placeorder/${serviceId}`, {
             headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
@@ -31,8 +31,8 @@ const PlaceOrder = () => {
      const order = { product:product,email:user.email };
 
      console.log(order);
-     axios.post('http://localhost:5000/addOrder', order)
-         // fetch('http://localhost:5000/addCycle',{
+     axios.post('https://arcane-cliffs-11485.herokuapp.com/addOrder', order)
+         // fetch('https://arcane-cliffs-11485.herokuapp.com/addCycle',{
          //     method:'POST',
          //     body: product
          // })
